@@ -17,6 +17,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 				EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TelegramBot.ApiService", "TelegramBot.ApiService", "{60197BA4-480E-4A54-916F-942599EFEF67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{0A11BAFC-4551-458F-81F5-1711603734A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +47,23 @@ Global
 		{1C272199-8D60-4124-BC78-153801210248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C272199-8D60-4124-BC78-153801210248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C272199-8D60-4124-BC78-153801210248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A11BAFC-4551-458F-81F5-1711603734A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A11BAFC-4551-458F-81F5-1711603734A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A11BAFC-4551-458F-81F5-1711603734A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A11BAFC-4551-458F-81F5-1711603734A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ABBC043A-573B-4885-9CD8-BC843C48BAD6} = {60197BA4-480E-4A54-916F-942599EFEF67}
+		{0A11BAFC-4551-458F-81F5-1711603734A5} = {60197BA4-480E-4A54-916F-942599EFEF67}
+		{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C} = {60197BA4-480E-4A54-916F-942599EFEF67}
+		{949EC7DF-28F1-4585-B340-CEA61ECB0F2A} = {60197BA4-480E-4A54-916F-942599EFEF67}
 	EndGlobalSection
 EndGlobal
