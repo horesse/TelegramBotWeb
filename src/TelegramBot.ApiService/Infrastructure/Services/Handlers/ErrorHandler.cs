@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
 
-namespace TelegramBot.ApiService.Infrastructure.Handlers;
+namespace TelegramBot.ApiService.Infrastructure.Services.Handlers;
 
 public class ErrorHandler(ILogger logger)
 {

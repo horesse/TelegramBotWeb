@@ -1,14 +1,16 @@
 using System.Collections.Concurrent;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using TelegramBot.ApiService.Application.Common.Interfaces;
 using TelegramBot.ApiService.Domain.Entities;
-using TelegramBot.ApiService.Infrastructure.Handlers;
+using TelegramBot.ApiService.Infrastructure.Services.Handlers;
 
 namespace TelegramBot.ApiService.Infrastructure.Services;
 
-public class BotLifecycleService(ILogger<BotLifecycleService> logger) : IBotLifecycleService
+public class BotLifecycleService(ILogger<BotLifecycleService> logger, IServiceScopeFactory scopeFactory)
+    : IBotLifecycleService
 {
     private readonly ConcurrentDictionary<int, ITelegramBotClient> _activeBots = new();
 
@@ -22,7 +24,7 @@ public class BotLifecycleService(ILogger<BotLifecycleService> logger) : IBotLife
         }
 
         // Создаем обработчики для сообщений
-        var updateHandler = new UpdateHandler(logger);
+        var updateHandler = new UpdateHandler(logger, scopeFactory);
         var errorHandler = new ErrorHandler(logger);
 
         // Запускаем бота с обработчиками

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using TelegramBot.ApiService.Application.Common.Interfaces;
 using TelegramBot.ApiService.Infrastructure.Data;
 using TelegramBot.ApiService.Infrastructure.Data.Interceptors;
+using TelegramBot.ApiService.Infrastructure.Services;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
@@ -29,5 +30,9 @@ public static class DependencyInjection
         builder.Services.AddScoped<ApplicationDbContextInitializer>();
 
         builder.Services.AddSingleton(TimeProvider.System);
+
+        builder.Services.AddSingleton<IBotLifecycleService, BotLifecycleService>();
+        builder.Services.AddScoped<IBotSettingsService, BotSettingsService>();
+        builder.Services.AddHostedService<BotInitializationService>();
     }
 }
