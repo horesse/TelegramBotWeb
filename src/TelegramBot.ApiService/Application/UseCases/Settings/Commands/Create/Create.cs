@@ -8,7 +8,7 @@ namespace TelegramBot.ApiService.Application.UseCases.Settings.Commands.Create;
 public class CreateSettingCommand : IRequest<SettingDto>
 {
     public string Key { get; set; } = null!;
-    public string? Value { get; set; }
+    public string Token { get; set; } = null!;
     public string? Description { get; set; }
 }
 
@@ -18,7 +18,7 @@ public class CreateSettingCommandHandler(IApplicationDbContext context, IMapper 
     {
         var entity = new Setting
         {
-            Key = request.Key, Value = request.Value, Description = request.Description, UpdatedAt = DateTime.UtcNow
+            Key = request.Key, Token = request.Token, Description = request.Description, UpdatedAt = DateTime.UtcNow
         };
         
         entity.AddDomainEvent(new SettingCreatedEvent(entity));

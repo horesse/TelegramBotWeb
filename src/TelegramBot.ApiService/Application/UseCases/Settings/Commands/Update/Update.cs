@@ -8,7 +8,7 @@ public class UpdateSettingCommand : IRequest<SettingDto>
 {
     public int Id { get; set; }
     public string Key { get; set; } = null!;
-    public string? Value { get; set; }
+    public string Token { get; set; } = null!;
     public string? Description { get; set; }
 }
 
@@ -20,7 +20,7 @@ public class UpdateSettingCommandHandler(IApplicationDbContext context, IMapper 
         Guard.Against.NotFound(request.Key, entity);
         
         entity.Key = request.Key;
-        entity.Value = request.Value;
+        entity.Token = request.Token;
         entity.Description = request.Description;
         entity.UpdatedAt = DateTime.UtcNow;
         

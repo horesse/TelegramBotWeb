@@ -16,8 +16,8 @@ public class BotLifecycleService(ILogger<BotLifecycleService> logger, IServiceSc
 
     public Task StartBotAsync(Setting setting)
     {
-        Guard.Against.NullOrWhiteSpace(setting.Value);
-        var bot = new TelegramBotClient(setting.Value);
+        Guard.Against.NullOrWhiteSpace(setting.Token);
+        var bot = new TelegramBotClient(setting.Token);
         if (!_activeBots.TryAdd(setting.Id, bot))
         {
             return Task.CompletedTask;

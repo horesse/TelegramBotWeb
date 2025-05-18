@@ -6,7 +6,7 @@ public class SettingDto
 {
     public int Id { get; set; }
     public string Key { get; set; } = null!;
-    public string? Value { get; set; }
+    public string Token { get; set; } = null!;
     public string? Description { get; set; }
     public DateTime UpdatedAt { get; set; }
     
@@ -14,7 +14,9 @@ public class SettingDto
     {
         public Mapping()
         {
-            CreateMap<Setting, SettingDto>();
+            CreateMap<Setting, SettingDto>()
+                .ForMember(c => c.Token, opt => opt.Ignore())
+                ;
         }
     }
 }
