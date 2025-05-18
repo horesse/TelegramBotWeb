@@ -4,6 +4,6 @@ namespace TelegramBot.ApiService.Application.Common.Interfaces;
 
 public interface IBotSettingsService
 {
-    Task<IEnumerable<Setting>> GetAllActiveBotSettingsAsync(CancellationToken cancellationToken);
-    Task<Setting?> GetBotSettingAsync(int settingId, CancellationToken cancellationToken);
+    Task<IEnumerable<Bot>> GetAllActiveBotSettingsAsync(CancellationToken cancellationToken);
+    Task<Bot?> GetBotSettingAsync(int settingId, CancellationToken cancellationToken);
 }

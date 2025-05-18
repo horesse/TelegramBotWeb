@@ -14,11 +14,11 @@ public class BotLifecycleService(ILogger<BotLifecycleService> logger, IServiceSc
 {
     private readonly ConcurrentDictionary<int, ITelegramBotClient> _activeBots = new();
 
-    public Task StartBotAsync(Setting setting)
+    public Task StartBotAsync(Bot bot)
     {
-        Guard.Against.NullOrWhiteSpace(setting.Token);
-        var bot = new TelegramBotClient(setting.Token);
-        if (!_activeBots.TryAdd(setting.Id, bot))
+        Guard.Against.NullOrWhiteSpace(bot.Token);
+        var client = new TelegramBotClient(bot.Token);
+        if (!_activeBots.TryAdd(bot.Id, client))
         {
             return Task.CompletedTask;
         }
@@ -28,14 +28,14 @@ public class BotLifecycleService(ILogger<BotLifecycleService> logger, IServiceSc
         var errorHandler = new ErrorHandler(logger);
 
         // Запускаем бота с обработчиками
-        bot.StartReceiving(
+        client.StartReceiving(
             updateHandler: updateHandler.HandleUpdateAsync,
             errorHandler: errorHandler.HandlePollingErrorAsync,
             receiverOptions: new ReceiverOptions { AllowedUpdates = [] },
             cancellationToken: CancellationToken.None
         );
 
-        logger.LogInformation("Bot {SettingId} started successfully", setting.Id);
+        logger.LogInformation("Bot {SettingId} started successfully", bot.Id);
 
         return Task.CompletedTask;
     }

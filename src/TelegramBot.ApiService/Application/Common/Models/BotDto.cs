@@ -2,7 +2,7 @@ using TelegramBot.ApiService.Domain.Entities;
 
 namespace TelegramBot.ApiService.Application.Common.Models;
 
-public class SettingDto
+public class BotDto
 {
     public int Id { get; set; }
     public string Key { get; set; } = null!;
@@ -14,7 +14,7 @@ public class SettingDto
     {
         public Mapping()
         {
-            CreateMap<Setting, SettingDto>()
+            CreateMap<Bot, BotDto>()
                 .ForMember(c => c.Token, opt => opt.Ignore())
                 ;
         }

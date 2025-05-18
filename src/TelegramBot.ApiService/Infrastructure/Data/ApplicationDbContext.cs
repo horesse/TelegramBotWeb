@@ -12,7 +12,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<MessageDelivery> MessageDeliveries => Set<MessageDelivery>();
     public DbSet<MailingList> MailingLists => Set<MailingList>();
     public DbSet<ChatMailingList> ChatMailingLists => Set<ChatMailingList>();
-    public DbSet<Setting> Settings => Set<Setting>();
+    public DbSet<Bot> Bots => Set<Bot>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -54,7 +54,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .HasIndex(e => e.ChatId)
             .IsUnique();
 
-        modelBuilder.Entity<Setting>()
+        modelBuilder.Entity<Bot>()
             .HasIndex(e => e.Key)
             .IsUnique();
     }

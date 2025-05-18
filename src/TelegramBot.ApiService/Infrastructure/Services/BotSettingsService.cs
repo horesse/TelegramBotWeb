@@ -6,15 +6,15 @@ namespace TelegramBot.ApiService.Infrastructure.Services;
 
 public class BotSettingsService(IApplicationDbContext context) : IBotSettingsService
 {
-    public async Task<IEnumerable<Setting>> GetAllActiveBotSettingsAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<Bot>> GetAllActiveBotSettingsAsync(CancellationToken cancellationToken)
     {
-        return await context.Settings
+        return await context.Bots
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<Setting?> GetBotSettingAsync(int settingId, CancellationToken cancellationToken)
+    public async Task<Bot?> GetBotSettingAsync(int settingId, CancellationToken cancellationToken)
     {
-        return await context.Settings.FindAsync([settingId], cancellationToken);
+        return await context.Bots.FindAsync([settingId], cancellationToken);
     }
 }
 

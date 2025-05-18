@@ -5,7 +5,7 @@ namespace TelegramBot.ApiService.Application.Common.Interfaces;
 
 public interface IBotLifecycleService
 {
-    Task StartBotAsync(Setting setting);
+    Task StartBotAsync(Bot bot);
     Task StopBotAsync(int botId);
     ITelegramBotClient GetBot(int botId);
 }

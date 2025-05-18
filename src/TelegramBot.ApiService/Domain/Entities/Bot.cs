@@ -1,6 +1,6 @@
 ﻿namespace TelegramBot.ApiService.Domain.Entities;
 
-public class Setting : BaseEntity
+public class Bot : BaseEntity
 {
     public string Key { get; set; } = null!;
     public string Token { get; set; } = null!;
