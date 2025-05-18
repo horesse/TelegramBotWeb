@@ -13,10 +13,13 @@ public static class DependencyInjection
 {
     public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
     {
+        var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__tg");
+        Guard.Against.NullOrWhiteSpace(connectionString, nameof(connectionString));
+        
         builder.Services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-            options.UseNpgsql("connectionString").AddAsyncSeeding(sp);
+            options.UseNpgsql(connectionString).AddAsyncSeeding(sp);
         });
 
         builder.EnrichNpgsqlDbContext<ApplicationDbContext>();
