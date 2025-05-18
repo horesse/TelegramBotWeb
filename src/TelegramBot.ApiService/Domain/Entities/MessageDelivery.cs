@@ -2,8 +2,8 @@
 
 public class MessageDelivery : BaseEntity
 {
-    public long MessageId { get; set; }
-    public long ChatId { get; set; }
+    public int MessageId { get; set; }
+    public int ChatId { get; set; }
     public DeliveryStatus Status { get; set; }
     public string? ErrorMessage { get; set; }
     public DateTime? SentAt { get; set; }
