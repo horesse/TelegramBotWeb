@@ -14,7 +14,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    await app.InitialiseDatabaseAsync();
+    // Инициализируем БД, только если запуск из Docker`a. 
+    // Это является исправлением проблемы с тем, что во время генерации документации nswag невозможно подключиться к БД
+    _ = bool.TryParse(Environment.GetEnvironmentVariable("DOCKER_STATUS"), out var runningInDocker);
+    if (runningInDocker)
+    {
+        await app.InitialiseDatabaseAsync();
+    }
 }
 else
 {

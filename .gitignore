@@ -486,3 +486,4 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 .azure
+/src/TelegramBot.ApiService/ApiService/wwwroot/api/specification.json

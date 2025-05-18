@@ -14,7 +14,6 @@ public static class DependencyInjection
     public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
     {
         var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__tg");
-        Guard.Against.NullOrWhiteSpace(connectionString, nameof(connectionString));
         
         builder.Services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
