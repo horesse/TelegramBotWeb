@@ -9,11 +9,12 @@
         <Nullable>enable</Nullable>
         <IsAspireHost>true</IsAspireHost>
         <UserSecretsId>b437759e-f018-4a54-8ad6-455ecfcf069f</UserSecretsId>
+        <RootNamespace>TelegramBot.AppHost</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\TelegramBot.ApiService\TelegramBot.ApiService.csproj"/>
-        <ProjectReference Include="..\TelegramBot.Web\TelegramBot.Web.csproj"/>
+        <ProjectReference Include="..\..\src\TelegramBot.ApiService\ApiService\ApiService.csproj"/>
+        <ProjectReference Include="..\..\src\TelegramBot.Web\Web\Web.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

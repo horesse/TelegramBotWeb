@@ -2,9 +2,9 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
 
-var apiService = builder.AddProject<Projects.TelegramBot_ApiService>("apiservice");
+var apiService = builder.AddProject<Projects.ApiService>("apiservice");
 
-builder.AddProject<Projects.TelegramBot_Web>("webfrontend")
+builder.AddProject<Projects.Web>("webfrontend")
     .WithExternalHttpEndpoints()
     .WithReference(cache)
     .WaitFor(cache)

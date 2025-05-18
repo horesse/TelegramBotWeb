@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.AppHost", "TelegramBot.AppHost\TelegramBot.AppHost.csproj", "{07A7909E-8CF1-40CE-8CF1-06D9BC002721}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost", "Aspire\AppHost\AppHost.csproj", "{07A7909E-8CF1-40CE-8CF1-06D9BC002721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.ServiceDefaults", "TelegramBot.ServiceDefaults\TelegramBot.ServiceDefaults.csproj", "{872DE7FF-4E53-438D-AF6E-321359B243BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults", "Aspire\ServiceDefaults\ServiceDefaults.csproj", "{872DE7FF-4E53-438D-AF6E-321359B243BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.ApiService", "TelegramBot.ApiService\TelegramBot.ApiService.csproj", "{ABBC043A-573B-4885-9CD8-BC843C48BAD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiService", "src\TelegramBot.ApiService\ApiService\ApiService.csproj", "{ABBC043A-573B-4885-9CD8-BC843C48BAD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.Web", "TelegramBot.Web\TelegramBot.Web.csproj", "{1C272199-8D60-4124-BC78-153801210248}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\TelegramBot.Web\Web\Web.csproj", "{1C272199-8D60-4124-BC78-153801210248}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9598C2EE-82ED-461C-AB54-AD34C7977EFC}"
 				ProjectSection(SolutionItems) = preProject
@@ -17,13 +17,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 				EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TelegramBot.ApiService", "TelegramBot.ApiService", "{60197BA4-480E-4A54-916F-942599EFEF67}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TelegramBot.ApiService", "TelegramBot.ApiService\TelegramBot.ApiService", "{60197BA4-480E-4A54-916F-942599EFEF67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{0A11BAFC-4551-458F-81F5-1711603734A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\TelegramBot.ApiService\Application\Application.csproj", "{0A11BAFC-4551-458F-81F5-1711603734A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\TelegramBot.ApiService\Domain\Domain.csproj", "{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\TelegramBot.ApiService\Infrastructure\Infrastructure.csproj", "{949EC7DF-28F1-4585-B340-CEA61ECB0F2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{CDC557BD-7512-4ACE-AFD6-4D2E28B619FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TelegramBot.Web", "TelegramBot.Web", "{3DA21A83-0DD4-409F-93CC-5592EB4432AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EA60CEFD-97A4-4B8D-873D-C9BC87DD2ABC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,5 +71,10 @@ Global
 		{0A11BAFC-4551-458F-81F5-1711603734A5} = {60197BA4-480E-4A54-916F-942599EFEF67}
 		{BADFC3AE-E7DF-4221-AA3D-4FA9CC7F279C} = {60197BA4-480E-4A54-916F-942599EFEF67}
 		{949EC7DF-28F1-4585-B340-CEA61ECB0F2A} = {60197BA4-480E-4A54-916F-942599EFEF67}
+		{872DE7FF-4E53-438D-AF6E-321359B243BB} = {CDC557BD-7512-4ACE-AFD6-4D2E28B619FC}
+		{07A7909E-8CF1-40CE-8CF1-06D9BC002721} = {CDC557BD-7512-4ACE-AFD6-4D2E28B619FC}
+		{1C272199-8D60-4124-BC78-153801210248} = {3DA21A83-0DD4-409F-93CC-5592EB4432AE}
+		{3DA21A83-0DD4-409F-93CC-5592EB4432AE} = {EA60CEFD-97A4-4B8D-873D-C9BC87DD2ABC}
+		{60197BA4-480E-4A54-916F-942599EFEF67} = {EA60CEFD-97A4-4B8D-873D-C9BC87DD2ABC}
 	EndGlobalSection
 EndGlobal
