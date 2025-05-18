@@ -1,5 +1,6 @@
 using Ardalis.GuardClauses;
 using TelegramBot.ApiService.Application.Common.Interfaces;
+using TelegramBot.ApiService.Domain.Events;
 
 namespace TelegramBot.ApiService.Application.UseCases.Settings.Commands.Delete;
 
@@ -12,6 +13,7 @@ public class DeleteSettingCommandHandler(IApplicationDbContext context) : IReque
         var entity = await context.Settings.FindAsync([request.Id], cancellationToken);
         Guard.Against.NotFound(request.Id, entity);
 
+        entity.AddDomainEvent(new SettingDeletedEvent(entity));
         context.Settings.Remove(entity);
         await context.SaveChangesAsync(cancellationToken);
 

@@ -1,6 +1,7 @@
 using TelegramBot.ApiService.Application.Common.Interfaces;
 using TelegramBot.ApiService.Application.Common.Models;
 using TelegramBot.ApiService.Domain.Entities;
+using TelegramBot.ApiService.Domain.Events;
 
 namespace TelegramBot.ApiService.Application.UseCases.Settings.Commands.Create;
 
@@ -15,14 +16,15 @@ public class CreateSettingCommandHandler(IApplicationDbContext context, IMapper 
 {
     public async Task<SettingDto> Handle(CreateSettingCommand request, CancellationToken cancellationToken)
     {
-        var setting = new Setting
+        var entity = new Setting
         {
             Key = request.Key, Value = request.Value, Description = request.Description, UpdatedAt = DateTime.UtcNow
         };
         
-        context.Settings.Add(setting);
+        entity.AddDomainEvent(new SettingCreatedEvent(entity));
+        context.Settings.Add(entity);
         await context.SaveChangesAsync(cancellationToken);
         
-        return mapper.Map<SettingDto>(setting);
+        return mapper.Map<SettingDto>(entity);
     }
 }
