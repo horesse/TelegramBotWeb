@@ -40,6 +40,11 @@ public class BotLifecycleService(ILogger<BotLifecycleService> logger, IServiceSc
         return Task.CompletedTask;
     }
 
+    public ITelegramBotClient GetBot(int botId)
+    {
+        return _activeBots[botId];
+    }
+    
     public Task StopBotAsync(int botId)
     {
         if (_activeBots.TryRemove(botId, out var bot))

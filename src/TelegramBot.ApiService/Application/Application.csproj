@@ -11,10 +11,15 @@
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
       <PackageReference Include="Microsoft.Extensions.Hosting" />
+      <PackageReference Include="Telegram.Bot" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="UseCases\MailAgent\Command\SendException\" />
     </ItemGroup>
 
 </Project>
