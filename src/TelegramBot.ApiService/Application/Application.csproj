@@ -1,9 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+      <RootNamespace>TelegramBot.ApiService.Application</RootNamespace>
+      <AssemblyName>TelegramBot.ApiService.Application</AssemblyName>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
 
 </Project>

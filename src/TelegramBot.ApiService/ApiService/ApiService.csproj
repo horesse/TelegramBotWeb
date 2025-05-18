@@ -5,10 +5,23 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>TelegramBot.ApiService</RootNamespace>
+        <AssemblyName>TelegramBot.ApiService</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" />
+        <PackageReference Include="NSwag.AspNetCore" />
+        <PackageReference Include="NSwag.MSBuild">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
   <ItemGroup>
