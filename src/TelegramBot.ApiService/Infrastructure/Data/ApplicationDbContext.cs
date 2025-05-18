@@ -1,33 +1,62 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TelegramBot.ApiService.Application.Common.Interfaces;
 using TelegramBot.ApiService.Domain.Entities;
 
 namespace TelegramBot.ApiService.Infrastructure.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    : DbContext(options), IApplicationDbContext
 {
-    public DbSet<Chat> Chats { get; set; }
-    public DbSet<Message> Messages { get; set; }
-    public DbSet<MessageDelivery> MessageDeliveries { get; set; }
-    public DbSet<MailingList> MailingLists { get; set; }
-    public DbSet<ChatMailingList> ChatMailingLists { get; set; }
-    public DbSet<Setting> Settings { get; set; }
+    public DbSet<Chat> Chats => Set<Chat>();
+    public DbSet<Message> Messages => Set<Message>();
+    public DbSet<MessageDelivery> MessageDeliveries => Set<MessageDelivery>();
+    public DbSet<MailingList> MailingLists => Set<MailingList>();
+    public DbSet<ChatMailingList> ChatMailingLists => Set<ChatMailingList>();
+    public DbSet<Setting> Settings => Set<Setting>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<ChatMailingList>()
-            .HasKey(cml => new { cml.ChatId, cml.MailingListId });
+        // Указываем схему для всех таблиц (опционально)
+        modelBuilder.HasDefaultSchema("public");
 
-        modelBuilder.Entity<ChatMailingList>()
-            .HasOne(cml => cml.Chat)
-            .WithMany(c => c.ChatMailingLists)
-            .HasForeignKey(cml => cml.ChatId);
+        // Настройка для работы с PostgreSQL
+        modelBuilder.UseIdentityByDefaultColumns();
 
-        modelBuilder.Entity<ChatMailingList>()
-            .HasOne(cml => cml.MailingList)
-            .WithMany(ml => ml.ChatMailingLists)
-            .HasForeignKey(cml => cml.MailingListId);
+        // Настройка для enum - сохраняем как строки
+        modelBuilder.Entity<Message>()
+            .Property(e => e.MessageType)
+            .HasConversion<string>();
+
+        modelBuilder.Entity<MessageDelivery>()
+            .Property(e => e.Status)
+            .HasConversion<string>();
+
+        // Настройка составного ключа
+        modelBuilder.Entity<ChatMailingList>(entity =>
+        {
+            entity.HasKey(e => new { e.ChatId, e.MailingListId });
+            
+            entity.HasOne(e => e.Chat)
+                .WithMany(e => e.ChatMailingLists)
+                .HasForeignKey(e => e.ChatId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.MailingList)
+                .WithMany(e => e.ChatMailingLists)
+                .HasForeignKey(e => e.MailingListId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        // Настройка индексов
+        modelBuilder.Entity<Chat>()
+            .HasIndex(e => e.ChatId)
+            .IsUnique();
+
+        modelBuilder.Entity<Setting>()
+            .HasIndex(e => e.Key)
+            .IsUnique();
     }
 }
 
