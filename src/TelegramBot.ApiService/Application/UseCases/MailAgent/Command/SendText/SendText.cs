@@ -16,13 +16,14 @@ public class SendTextCommandHandler(IApplicationDbContext context, IBotLifecycle
 {
     public async Task Handle(SendTextCommand request, CancellationToken cancellationToken)
     {
-        var bot = await context.Bots.FindAsync([request.BotId], cancellationToken);
+        var bot = await context.Bots
+            .Include(c => c.Chats)
+            .FirstOrDefaultAsync(b => b.Id == request.BotId, cancellationToken);
         Guard.Against.NotFound(request.BotId, bot);
 
         var botClient = botLifecycleService.GetBot(bot.Id);
-        var chats = await context.Chats.ToListAsync(cancellationToken);
-
-        foreach (var chat in chats)
+        
+        foreach (var chat in bot.Chats)
         {
             try
             {
