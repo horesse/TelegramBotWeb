@@ -21,8 +21,10 @@ public class CreateBotCommandHandler(IApplicationDbContext context, IMapper mapp
             Key = request.Key, Token = request.Token, Description = request.Description, UpdatedAt = DateTime.UtcNow
         };
         
-        entity.AddDomainEvent(new BotCreatedEvent(entity));
         context.Bots.Add(entity);
+        await context.SaveChangesAsync(cancellationToken);
+        
+        entity.AddDomainEvent(new BotCreatedEvent(entity));
         await context.SaveChangesAsync(cancellationToken);
         
         return mapper.Map<BotDto>(entity);

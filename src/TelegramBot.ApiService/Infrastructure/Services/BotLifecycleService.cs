@@ -24,7 +24,7 @@ public class BotLifecycleService(ILogger<BotLifecycleService> logger, IServiceSc
         }
 
         // Создаем обработчики для сообщений
-        var updateHandler = new UpdateHandler(logger, scopeFactory);
+        var updateHandler = new UpdateHandler(logger, scopeFactory, bot.Id);
         var errorHandler = new ErrorHandler(logger);
 
         // Запускаем бота с обработчиками

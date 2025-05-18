@@ -8,7 +8,7 @@ using TelegramBot.ApiService.Application.Common.Interfaces;
 
 namespace TelegramBot.ApiService.Infrastructure.Services.Handlers;
 
-public class UpdateHandler(ILogger logger, IServiceScopeFactory scopeFactory)
+public class UpdateHandler(ILogger logger, IServiceScopeFactory scopeFactory, int botId)
 {
     public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
@@ -25,8 +25,9 @@ public class UpdateHandler(ILogger logger, IServiceScopeFactory scopeFactory)
             if (update.MyChatMember?.NewChatMember.Status is ChatMemberStatus.Member or ChatMemberStatus.Administrator
                 or ChatMemberStatus.Creator)
             {
-                var chat = await context.Chats.FirstOrDefaultAsync(c => c.ChatId == chatId.Value, cancellationToken);
-                
+                var chat = await context.Chats.FirstOrDefaultAsync(c => c.ChatId == chatId.Value && c.BotId == botId,
+                    cancellationToken);
+
                 if (chat == null)
                 {
                     var entity = new TelegramBot.ApiService.Domain.Entities.Chat
@@ -37,9 +38,10 @@ public class UpdateHandler(ILogger logger, IServiceScopeFactory scopeFactory)
                         LastName = update.MyChatMember.From.LastName,
                         IsActive = true,
                         CreatedAt = DateTime.UtcNow,
-                        LastInteractionAt = DateTime.UtcNow
+                        LastInteractionAt = DateTime.UtcNow,
+                        BotId = botId
                     };
-                    
+
                     context.Chats.Add(entity);
                     logger.LogInformation("User joined chat: {ChatId}", chatId);
                 }
@@ -48,7 +50,7 @@ public class UpdateHandler(ILogger logger, IServiceScopeFactory scopeFactory)
             else if (update.MyChatMember?.NewChatMember.Status is ChatMemberStatus.Left or ChatMemberStatus.Kicked)
             {
                 var chat = await context.Chats.FirstOrDefaultAsync(c => c.ChatId == chatId.Value, cancellationToken);
-                
+
                 if (chat != null)
                 {
                     context.Chats.Remove(chat);
