@@ -18,13 +18,9 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         base.OnModelCreating(modelBuilder);
 
-        // Указываем схему для всех таблиц (опционально)
         modelBuilder.HasDefaultSchema("public");
-
-        // Настройка для работы с PostgreSQL
         modelBuilder.UseIdentityByDefaultColumns();
 
-        // Настройка для enum - сохраняем как строки
         modelBuilder.Entity<Message>()
             .Property(e => e.MessageType)
             .HasConversion<string>();
@@ -33,11 +29,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .Property(e => e.Status)
             .HasConversion<string>();
 
-        // Настройка составного ключа
         modelBuilder.Entity<ChatMailingList>(entity =>
         {
             entity.HasKey(e => new { e.ChatId, e.MailingListId });
-            
+
             entity.HasOne(e => e.Chat)
                 .WithMany(e => e.ChatMailingLists)
                 .HasForeignKey(e => e.ChatId)
@@ -49,7 +44,13 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                 .OnDelete(DeleteBehavior.Cascade);
         });
 
-        // Настройка индексов
+        // Настройка связи между Bot и Chat
+        modelBuilder.Entity<Chat>()
+            .HasOne(c => c.Bot)
+            .WithMany(b => b.Chats)
+            .HasForeignKey(c => c.BotId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         modelBuilder.Entity<Chat>()
             .HasIndex(e => e.ChatId)
             .IsUnique();
@@ -59,4 +60,3 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .IsUnique();
     }
 }
-

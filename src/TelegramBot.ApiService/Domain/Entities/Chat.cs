@@ -9,6 +9,9 @@ public class Chat : BaseEntity
     public bool IsActive { get; set; } = true;
     public DateTime CreatedAt { get; set; }
     public DateTime? LastInteractionAt { get; set; }
+    
+    public int BotId { get; set; }
+    public Bot Bot { get; set; } = null!;
 
     public ICollection<MessageDelivery> MessageDeliveries { get; set; } = new List<MessageDelivery>();
     public ICollection<ChatMailingList> ChatMailingLists { get; set; } = new List<ChatMailingList>();
