@@ -1,7 +1,4 @@
-﻿using TelegramBot.ApiService.Domain.Common;
-using TelegramBot.ApiService.Domain.Enums;
-
-namespace TelegramBot.ApiService.Domain.Entities;
+﻿namespace TelegramBot.ApiService.Domain.Entities;
 
 public class Message : BaseEntity
 {

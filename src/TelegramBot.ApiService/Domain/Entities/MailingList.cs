@@ -1,6 +1,4 @@
-﻿using TelegramBot.ApiService.Domain.Common;
-
-namespace TelegramBot.ApiService.Domain.Entities;
+﻿namespace TelegramBot.ApiService.Domain.Entities;
 
 public class MailingList : BaseEntity
 {
