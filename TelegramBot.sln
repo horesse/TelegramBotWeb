@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.AppHost", "TelegramBot.AppHost\TelegramBot.AppHost.csproj", "{07A7909E-8CF1-40CE-8CF1-06D9BC002721}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.ServiceDefaults", "TelegramBot.ServiceDefaults\TelegramBot.ServiceDefaults.csproj", "{872DE7FF-4E53-438D-AF6E-321359B243BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.ApiService", "TelegramBot.ApiService\TelegramBot.ApiService.csproj", "{ABBC043A-573B-4885-9CD8-BC843C48BAD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot.Web", "TelegramBot.Web\TelegramBot.Web.csproj", "{1C272199-8D60-4124-BC78-153801210248}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07A7909E-8CF1-40CE-8CF1-06D9BC002721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A7909E-8CF1-40CE-8CF1-06D9BC002721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A7909E-8CF1-40CE-8CF1-06D9BC002721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A7909E-8CF1-40CE-8CF1-06D9BC002721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872DE7FF-4E53-438D-AF6E-321359B243BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872DE7FF-4E53-438D-AF6E-321359B243BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872DE7FF-4E53-438D-AF6E-321359B243BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872DE7FF-4E53-438D-AF6E-321359B243BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABBC043A-573B-4885-9CD8-BC843C48BAD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBC043A-573B-4885-9CD8-BC843C48BAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBC043A-573B-4885-9CD8-BC843C48BAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBC043A-573B-4885-9CD8-BC843C48BAD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C272199-8D60-4124-BC78-153801210248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C272199-8D60-4124-BC78-153801210248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C272199-8D60-4124-BC78-153801210248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C272199-8D60-4124-BC78-153801210248}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
