@@ -13,13 +13,10 @@ public static class DependencyInjection
 {
     public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
     {
-        var connectionString = builder.Configuration.GetConnectionString("CleanArchitectureDb");
-        Guard.Against.Null(connectionString, message: "Connection string 'CleanArchitectureDb' not found.");
-        
         builder.Services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-            options.UseNpgsql(connectionString).AddAsyncSeeding(sp);
+            options.UseNpgsql("connectionString").AddAsyncSeeding(sp);
         });
 
         builder.EnrichNpgsqlDbContext<ApplicationDbContext>();

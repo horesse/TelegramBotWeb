@@ -2,8 +2,8 @@
 
 public class ChatMailingList
 {
-    public long ChatId { get; set; }
-    public long MailingListId { get; set; }
+    public int ChatId { get; set; }
+    public int MailingListId { get; set; }
     public DateTime AddedAt { get; set; }
 
     // Навигационные свойства
