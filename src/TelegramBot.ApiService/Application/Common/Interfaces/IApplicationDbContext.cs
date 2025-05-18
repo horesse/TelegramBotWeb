@@ -10,4 +10,5 @@ public interface IApplicationDbContext
     public DbSet<MailingList> MailingLists { get; }
     public DbSet<ChatMailingList> ChatMailingLists { get; }
     public DbSet<Setting> Settings { get; }
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
